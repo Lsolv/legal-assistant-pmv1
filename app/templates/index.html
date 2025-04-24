@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asesor Legal - PMV1</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        #chatbox { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Asesor Legal para Discapacidad Motriz</h1>
+    <div id="chatbox"></div>
+    <form id="askForm">
+        <input type="text" id="question" placeholder="Escribe tu pregunta legal..." style="width: 70%;">
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="suggestions" style="margin-top: 20px;">
+        <h3>Preguntas sugeridas:</h3>
+        <ul id="suggestions-list"></ul>
+    </div>
+
+    <script>
+        const form = document.getElementById('askForm');
+        const chatbox = document.getElementById('chatbox');
+        const suggestionsList = document.getElementById('suggestions-list');
+        
+        // Mostrar sugerencias iniciales
+        fetch('/ask', { method: 'POST', body: new FormData() })
+            .then(r => r.json())
+            .then(data => {
+                data.suggestions.forEach(q => {
+                    const li = document.createElement('li');
+                    li.textContent = q;
+                    li.style.cursor = 'pointer';
+                    li.onclick = () => document.getElementById('question').value = q;
+                    suggestionsList.appendChild(li);
+                });
+            });
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            
+            // Mostrar pregunta del usuario
+            chatbox.innerHTML += `<p class="user"><strong>Tú:</strong> ${question}</p>`;
+            
+            // Obtener respuesta
+            const formData = new FormData();
+            formData.append('question', question);
+            
+            const response = await fetch('/ask', { method: 'POST', body: formData });
+            const data = await response.json();
+            
+            // Mostrar respuesta
+            chatbox.innerHTML += `<p class="bot"><strong>Asesor:</strong> ${data.answer}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+            
+            document.getElementById('question').value = '';
+        };
+    </script>
+</body>
+</html>
