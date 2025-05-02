@@ -1,0 +1,14 @@
+[
+    {
+        "context": "En Perú, las personas con discapacidad tienen derecho a solicitar una pensión por discapacidad ante el Consejo Nacional para la Integración de la Persona con Discapacidad (CONADIS). Los requisitos incluyen: tener más del 40% de discapacidad certificada, ser mayor de 18 años, no percibir otra pensión del Estado y encontrarse en situación de pobreza.",
+        "sample_question": "¿Cómo solicitar una pensión por discapacidad en Perú?"
+    },
+    {
+        "context": "El registro de discapacidad en Perú se realiza ante el CONADIS. Se requiere presentar: certificado médico oficial que acredite la discapacidad, DNI original y copia, y llenar el formulario correspondiente. El trámite es gratuito y puede realizarse en las oficinas del CONADIS o en los centros de salud autorizados.",
+        "sample_question": "¿Qué necesito para registrar mi discapacidad en Perú?"
+    },
+    {
+        "context": "La Ley N° 29973, Ley General de la Persona con Discapacidad, establece que las personas con discapacidad tienen derecho a accesibilidad en todos los espacios públicos y servicios. Esto incluye ajustes razonables en trámites legales, como la provisión de intérpretes de lengua de señas o formatos accesibles según sea necesario.",
+        "sample_question": "¿Qué derechos tienen las personas con discapacidad en trámites legales?"
+    }
+]
